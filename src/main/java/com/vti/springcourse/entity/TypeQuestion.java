@@ -1,5 +1,6 @@
 package com.vti.springcourse.entity;
 
+import com.vti.springcourse.common.converter.TypeNameConverter;
 import com.vti.springcourse.common.enums.TypeQuestionEnum;
 import jakarta.persistence.*;
 
@@ -10,7 +11,7 @@ public class TypeQuestion {
     private int typeId;
 
     @Column(name = "type_name")
-    @Enumerated(EnumType.ORDINAL)
+    @Convert(converter = TypeNameConverter.class )
     private TypeQuestionEnum typeQuestion;
 
     public TypeQuestion() {

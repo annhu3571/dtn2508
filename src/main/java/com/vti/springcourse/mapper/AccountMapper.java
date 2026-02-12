@@ -22,8 +22,8 @@ public class AccountMapper {
         for (Account account: accounts) {
             AccountResponse accountResponse = new AccountResponse();
             accountResponse.setEmail(account.getEmail());
-            accountResponse.setCreateDate(account.getCreateDate());
-            accountResponse.setDepartmentId(account.getDepartmentId());
+//            accountResponse.setCreateDate(account.getCreateDate());
+//            accountResponse.setDepartmentId(account.getDepartmentId());
             accountResponse.setUsername(account.getUserName());
             accountResponse.setFullName(account.getFullName());
             accountResponses.add(

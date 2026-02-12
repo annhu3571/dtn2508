@@ -3,6 +3,7 @@ package com.vti.springcourse.controller;
 import com.vti.springcourse.dto.response.AccountResponse;
 import com.vti.springcourse.entity.Account;
 import com.vti.springcourse.service.AccountService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,15 +16,17 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @GetMapping(value = "/accounts")
-    public Page<AccountResponse> getAccounts(Pageable pageable) {
-        return accountService.getListAccount(pageable);
+    public Page<AccountResponse> getAccounts(@RequestParam String userName, Pageable pageable) {
+        return accountService.getListAccount(userName, pageable);
     }
 
-
     @GetMapping(value = "/accounts/{id}")
-    public Account getAccounts(@PathVariable int id) {
-        return accountService.getAccountById(id);
+    public AccountResponse getAccounts(@PathVariable int id) {
+        return  accountService.getAccountById(id);
     }
 
     @DeleteMapping(value = "/accounts/{id}")

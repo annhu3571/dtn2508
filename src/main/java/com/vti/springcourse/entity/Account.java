@@ -1,9 +1,6 @@
 package com.vti.springcourse.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -15,8 +12,15 @@ public class Account {
     private  String email;
     private String username;
     private String fullName;
-    private int departmentId;
-    private int positionId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    @JoinColumn(name = "position_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Position position;
+
     private Date createDate;
 
     public Account() {
@@ -30,20 +34,12 @@ public class Account {
         this.createDate = createDate;
     }
 
-    public int getPositionId() {
-        return positionId;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setPositionId(int positionId) {
-        this.positionId = positionId;
-    }
-
-    public int getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     public String getFullName() {
@@ -68,6 +64,22 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public int getAccountId() {

@@ -23,10 +23,7 @@ public class  Account extends Object{
         return Objects.hashCode(age);
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-    }
+
 
     static Scanner sc = new Scanner(System.in);
 

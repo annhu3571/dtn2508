@@ -1,10 +1,12 @@
 package com.vti.springcourse.dto.request;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class DepartmentRequest {
 
     private int id;
     private String name;
-
+    private MultipartFile avatarFile;
     public int getId() {
         return id;
     }

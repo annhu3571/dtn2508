@@ -1,12 +1,11 @@
 package com.vti.springcourse.controller;
 
 
+import com.vti.springcourse.dto.request.TypeQuestionRequest;
 import com.vti.springcourse.entity.TypeQuestion;
 import com.vti.springcourse.service.TypeQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +19,11 @@ public class TypeQuestionController {
     @GetMapping
     public List<TypeQuestion> getAll() {
         return  typeQuestionService.getAll();
+    }
+
+    @PostMapping
+    public String createTypeQuestion(@RequestBody TypeQuestionRequest typeQuestionRequest) {
+        typeQuestionService.createTypeQuestion(typeQuestionRequest);
+        return "OK";
     }
 }
